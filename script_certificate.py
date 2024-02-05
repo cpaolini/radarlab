@@ -53,13 +53,11 @@ if unit=='1':
 			if len(fb_number) != 6:
 				print("Wrong FB Number")
 				exit(0)
-			if unittype != "AS":
-				antenna1_number=input("Enter antenna1 serial number \n")
+			antenna1_number=input("Enter antenna1 serial number \n")
 			if unittype != "AS" and len(antenna1_number) != 6:
 				print("Wrong Antenna1 Number")
 				exit(0)
-			if unittype != "AS":
-				antenna2_number=input("Enter antenna2 serial number \n")
+			antenna2_number=input("Enter antenna2 serial number \n")
 			if unittype != "AS" and len(antenna2_number) != 6:
 				print("Wrong Antenna2 Number")
 				exit(0)
