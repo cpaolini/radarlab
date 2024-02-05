@@ -13,7 +13,7 @@ wb=load_workbook(r'C:\Users\E219\Documents\certificate\week_report_2024.xlsx')
 
 unit=input("Enter 1 for Radar , 2 for LIDAR \n")
 if unit=='1':
-			unittype=input("Enter  DS, DE, AS, ZC \n")
+			unittype=input("Enter  DS, DE, AS, ZC, ZM, DC \n")
 			match unittype:
 				case "DS":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_ds.docx")
@@ -27,16 +27,40 @@ if unit=='1':
 				case "ZC":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_zc.docx")
 					type = "Stalker dual SL"
-			date = "01/08/2024"
+				case "ZM":
+					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_zm.docx")
+					type = "Stalker dual SL"
+				case "DC":
+					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_dc.docx")
+					type = "Stalker dual SL"
+			date = "01/29/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit lab number for Lab\n")
 			serial_number=input("Enter unit serial number \n")
+			if len(serial_number) != 6:
+				print("Wrong Serial Number")
+				exit(0)
 			chps_number=input("Enter unit chps number \n")
+			if len(chps_number) != 5:
+				print("Wrong CHPS Number")
+				exit(0)
 			address_code=input("Enter chps address code\n")
 			fa_number=input("Enter FA number from manual\n")
+			if len(fa_number) != 6:
+				print("Wrong FA Number")
+				exit(0)
 			fb_number=input("Enter FB number from manual\n")
+			if len(fb_number) != 6:
+				print("Wrong FB Number")
+				exit(0)
 			antenna1_number=input("Enter antenna1 serial number \n")
+			if len(antenna1_number) != 6:
+				print("Wrong Antenna1 Number")
+				exit(0)
 			antenna2_number=input("Enter antenna2 serial number \n")
+			if len(antenna2_number) != 6:
+				print("Wrong Antenna2 Number")
+				exit(0)
 			
 #ifCHPAreanumberisnotincludedinfiletest.docxfirstincludewithaddress
 			if(f'CHP ({address_code})')in result:
@@ -46,7 +70,8 @@ if unit=='1':
 				print(address_1)
 				print(address_2)
 			else:
-				print("no")
+				print("Address Code not Found")
+				exit(0)
 			st_address=address_1
 			area_address=address_2
 			context={'date':date,'lab_number':lab_number,'chps_number':chps_number,'serial_number':serial_number,'fa_number':fa_number,
@@ -78,11 +103,17 @@ elif unit=='2':
 				case "LP":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_lp.docx")
 					type = "PRO-LITE+"
-			date = "01/08/2024"
+			date = "01/29/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit labnumber for Lab\n")
 			serial_number=input("Enter unit serial number\n")
+			if len(serial_number) != 6:
+				print("Wrong Serial Number")
+				exit(0)
 			chps_number=input("Enter unit chps number\n")
+			if len(chps_number) != 5:
+				print("Wrong CHPS Number")
+				exit(0)
 			address_code=input("Enter chps address code\n")
 			#ifCHPAreanumberisnotincludedinfiletest.docxfirstincludewithaddress
 			if(f'CHP ({address_code})')in result:
@@ -92,7 +123,8 @@ elif unit=='2':
 				print(address_1)
 				print(address_2)
 			else:
-				print("no")
+				print("Address Code not Found")
+				exit(0)
 			st_address=address_1
 			area_address=address_2
 			context={'date':date,'lab_number':lab_number,'chps_number':chps_number,'serial_number':serial_number,
@@ -108,9 +140,3 @@ elif unit=='2':
 
 else:
 			print("Enternumber1or2")
-
-
-
-
-
-
