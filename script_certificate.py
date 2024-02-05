@@ -53,12 +53,14 @@ if unit=='1':
 			if len(fb_number) != 6:
 				print("Wrong FB Number")
 				exit(0)
-			antenna1_number=input("Enter antenna1 serial number \n")
-			if len(antenna1_number) != 6:
+			if unittype != "AS":
+				antenna1_number=input("Enter antenna1 serial number \n")
+			if unittype != "AS" and len(antenna1_number) != 6:
 				print("Wrong Antenna1 Number")
 				exit(0)
-			antenna2_number=input("Enter antenna2 serial number \n")
-			if len(antenna2_number) != 6:
+			if unittype != "AS":
+				antenna2_number=input("Enter antenna2 serial number \n")
+			if unittype != "AS" and len(antenna2_number) != 6:
 				print("Wrong Antenna2 Number")
 				exit(0)
 			
@@ -139,4 +141,4 @@ elif unit=='2':
 			wb.save(r'C:\Users\E219\Documents\certificate\week_report_2024.xlsx')
 
 else:
-			print("Enternumber1or2")
+			print("Enter number 1 or 2")
