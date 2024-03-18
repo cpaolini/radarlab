@@ -33,7 +33,7 @@ if unit=='1':
 				case "DC":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_dc.docx")
 					type = "Stalker dual SL"
-			date = "01/29/2024"
+			date = "03/11/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit lab number for Lab\n")
 			serial_number=input("Enter unit serial number \n")
@@ -82,14 +82,17 @@ if unit=='1':
 			doc.save(r"C:\Users\E219\Documents\certificate\radar\AS24-{}.docx".format(lab_number))
 			ws=wb['RADAR']
 			wb.font=Font(size=12)
-			ws.append(['AS24-'+lab_number,unittype+serial_number,'CHPS'+chps_number,address_code,date," "," "," ",type])
+			if unittype != "AS":
+				ws.append(['AS24-'+lab_number,unittype+serial_number,'CHPS'+chps_number,address_code,date," "," "," ",type," "," ","S/N "+antenna1_number,"S/N "+antenna2_number])
+			else:
+				ws.append(['AS24-'+lab_number,unittype+serial_number,'CHPS'+chps_number,address_code,date," "," "," ",type," "," ","N/A","N/A"])
 			wb.save(r'C:\Users\E219\Documents\certificate\week_report_2024.xlsx')
 			
 				
 
 
 elif unit=='2':
-			unit_type=input("Enter:TS,TJ,UX,LP \n")
+			unit_type=input("Enter:TS,TJ,UX,LP,UL \n")
 			match unit_type:
 				case "TS":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_ts.docx")
@@ -103,11 +106,14 @@ elif unit=='2':
 				case "LP":
 					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_lp.docx")
 					type = "PRO-LITE+"
-			date = "01/29/2024"
+				case "UL":
+					doc=DocxTemplate(r"C:\Users\E219\Documents\certificate\template\template_ul.docx")
+					type = "20/20 Ultralyte 200 LR"
+			date = "03/11/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit labnumber for Lab\n")
 			serial_number=input("Enter unit serial number\n")
-			if len(serial_number) != 6:
+			if unit_type != "LP" and len(serial_number) != 6:
 				print("Wrong Serial Number")
 				exit(0)
 			chps_number=input("Enter unit chps number\n")
