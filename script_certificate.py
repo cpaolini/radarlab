@@ -13,13 +13,19 @@ wb=load_workbook(r'C:\Users\Radar Lab\Documents\certificate\week_report_2024.xls
 
 unit=input("Enter 1 for Radar , 2 for LIDAR \n")
 if unit=='1':
-			unittype=input("Enter  DS, DE, AS, ZC, ZM, DC \n")
+			unittype=input("Enter  DS, DE, AS, ZC, ZM, DC, DSP, DEP \n")
 			match unittype:
 				case "DS":
 					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_ds.docx")
 					type = "Stalker DSR"
+				case "DSP":
+					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_ds_passed.docx")
+					type = "Stalker DSR"
 				case "DE":
 					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_de.docx")
+					type = "Stalker DSR"
+				case "DEP":
+					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_de_passed.docx")
 					type = "Stalker DSR"
 				case "AS":
 					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_as.docx")
@@ -33,7 +39,7 @@ if unit=='1':
 				case "DC":
 					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_dc.docx")
 					type = "Stalker dual SL"
-			date = "04/29/2024"
+			date = "08/12/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit lab number for Lab\n")
 			serial_number=input("Enter unit serial number \n")
@@ -46,7 +52,7 @@ if unit=='1':
 				exit(0)
 			address_code=input("Enter chps address code\n")
 			fork=input("Enter '1' if forks are present\n")
-			if fork == 1:
+			if fork == '1':
 				fa_number=input("Enter FA number from manual\n")
 				if len(fa_number) != 6:
 					print("Wrong FA Number")
@@ -114,7 +120,7 @@ elif unit=='2':
 				case "UL":
 					doc=DocxTemplate(r"C:\Users\Radar Lab\Documents\certificate\template\template_ul.docx")
 					type = "20/20 Ultralyte 200 LR"
-			date = "04/29/2024"
+			date = "08/12/2024"
 			#date=input("Enter Unit Arrival Date in Lab\n")
 			lab_number=input("Enter unit labnumber for Lab\n")
 			serial_number=input("Enter unit serial number\n")
